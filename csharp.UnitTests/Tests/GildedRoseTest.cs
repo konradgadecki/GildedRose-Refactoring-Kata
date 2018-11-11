@@ -172,7 +172,9 @@ namespace csharp.UnitTests.Tests
         }
 
         [Test]
-        [TestCase(-1, 20, 18)]
+        [TestCase(1, 20, 18)]
+        [TestCase(-1, 20, 16)]
+        [TestCase(-1, 3, 0)]
         public void UpdateQuality_ConjuredGetsOlder_ConjuredQualityDegradesTwoTimesFaster(int sellIn, int quality,
             int expectedResult)
         {

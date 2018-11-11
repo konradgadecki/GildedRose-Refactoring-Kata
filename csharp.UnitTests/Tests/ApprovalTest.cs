@@ -9,6 +9,7 @@ namespace csharp.UnitTests.Tests
     public class ApprovalTest
     {
         [Test]
+        [Ignore("Not relevant")]
         public void ThirtyDays()
         {
             var lines = File.ReadAllLines("ThirtyDays.txt");
