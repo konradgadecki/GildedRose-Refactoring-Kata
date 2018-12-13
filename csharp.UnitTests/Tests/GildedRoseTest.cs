@@ -68,7 +68,7 @@ namespace csharp.UnitTests.Tests
         [TestCase(1, 1, 2)]                                                                                    
         public void UpdateQuality_AgedBrieGetsOlder_AgedBrieIncreasesInQuality(int sellIn, int quality, int expectedResult)
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Aged Brie", SellIn = sellIn, Quality = quality } };
+            IList<Item> items = new List<Item> { new AgedBrieItem { Name = "Aged Brie", SellIn = sellIn, Quality = quality } };
             var gildedRose = new GildedRose(items);
 
             gildedRose.UpdateQuality();
@@ -82,7 +82,7 @@ namespace csharp.UnitTests.Tests
         [TestCase(-5, 49, 50)]
         public void UpdateQuality_AgedBrieGetsOlder_AgedBrieIncreasesInQualityMaxUpTo50(int sellIn, int quality, int expectedResult)
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Aged Brie", SellIn = sellIn, Quality = quality } };
+            IList<Item> items = new List<Item> { new AgedBrieItem { Name = "Aged Brie", SellIn = sellIn, Quality = quality } };
             var gildedRose = new GildedRose(items);
 
             gildedRose.UpdateQuality();
@@ -96,7 +96,7 @@ namespace csharp.UnitTests.Tests
         [TestCase(0, 0, 0)]
         public void UpdateQuality_SulfurasIsNeverSold_SellInStaysTheSame(int sellIn, int quality, int expectedResult)
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = sellIn, Quality = quality } };
+            IList<Item> items = new List<Item> { new SulfurasItem() { Name = "Sulfuras, Hand of Ragnaros", SellIn = sellIn, Quality = quality } };
             var gildedRose = new GildedRose(items);
 
             gildedRose.UpdateQuality();
@@ -110,7 +110,7 @@ namespace csharp.UnitTests.Tests
         [TestCase(0, 0, 0)]
         public void UpdateQuality_SulfurasNeverDecreasesInQuality_QualityInStaysTheSame(int sellIn, int quality, int expectedResult)
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = sellIn, Quality = quality } };
+            IList<Item> items = new List<Item> { new SulfurasItem() { Name = "Sulfuras, Hand of Ragnaros", SellIn = sellIn, Quality = quality } };
             var gildedRose = new GildedRose(items);
 
             gildedRose.UpdateQuality();
@@ -126,7 +126,7 @@ namespace csharp.UnitTests.Tests
         [TestCase(20, 40, 41)]
         public void UpdateQuality_BackstagePassesGetsOlder_BackstagePassesIncreasesInQualityMaxUpTo50(int sellIn, int quality, int expectedResult)
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellIn, Quality = quality } };
+            IList<Item> items = new List<Item> { new BackstageItem() { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellIn, Quality = quality } };
             var gildedRose = new GildedRose(items);
 
             gildedRose.UpdateQuality();
@@ -138,7 +138,7 @@ namespace csharp.UnitTests.Tests
         [TestCase(10, 40, 42)]
         public void UpdateQuality_BackstagePassesLessThen10SellIn_QualityIncreasesBy2(int sellIn, int quality, int expectedResult)
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellIn, Quality = quality } };
+            IList<Item> items = new List<Item> { new BackstageItem() { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellIn, Quality = quality } };
             var gildedRose = new GildedRose(items);
 
             gildedRose.UpdateQuality();
@@ -150,7 +150,7 @@ namespace csharp.UnitTests.Tests
         [TestCase(5, 40, 43)]
         public void UpdateQuality_BackstagePassesLessThen5SellIn_QualityIncreasesBy2(int sellIn, int quality, int expectedResult)
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellIn, Quality = quality } };
+            IList<Item> items = new List<Item> { new BackstageItem() { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellIn, Quality = quality } };
             var gildedRose = new GildedRose(items);
 
             gildedRose.UpdateQuality();
@@ -163,7 +163,7 @@ namespace csharp.UnitTests.Tests
         [TestCase(0, 50, 0)]
         public void UpdateQuality_BackstagePassesConcertEnds_QualityDropsToZero(int sellIn, int quality, int expectedResult)
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellIn, Quality = quality } };
+            IList<Item> items = new List<Item> { new BackstageItem() { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellIn, Quality = quality } };
             var gildedRose = new GildedRose(items);
 
             gildedRose.UpdateQuality();
@@ -178,7 +178,7 @@ namespace csharp.UnitTests.Tests
         public void UpdateQuality_ConjuredGetsOlder_ConjuredQualityDegradesTwoTimesFaster(int sellIn, int quality,
             int expectedResult)
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = sellIn, Quality = quality } };
+            IList<Item> items = new List<Item> { new ConjuredItem() { Name = "Conjured Mana Cake", SellIn = sellIn, Quality = quality } };
             var gildedRose = new GildedRose(items);
 
             gildedRose.UpdateQuality();
