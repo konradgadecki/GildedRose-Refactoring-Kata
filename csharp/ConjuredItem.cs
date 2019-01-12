@@ -8,22 +8,6 @@ namespace csharp
 {
     public class ConjuredItem : Item
     {
-        public override void UpdateQuality()
-        {
-            SellIn--;
-
-            if (Quality > 0 && SellIn >= 0)
-            {
-                Quality = Quality - 2;
-            }
-            else if (Quality > 3 && SellIn < 0)
-            {
-                Quality = Quality - 4;
-            }
-            else
-            {
-                Quality = 0;
-            }
-        }
+        protected override int QUALITY_DROP_VALUE { get { return 2; } }
     }
 }

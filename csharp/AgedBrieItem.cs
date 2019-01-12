@@ -8,20 +8,16 @@ namespace csharp
 {
     public class AgedBrieItem : Item
     {
+        private readonly int QUALITY_INCREASE_VALUE = 1;
+
         public override void UpdateQuality()
         {
             SellIn--;
 
-            if (SellIn < 0)
-            {
-                Quality = Quality + 2;
-            }
-            else
-            {
-                Quality++;
-            }
+            if (BeforeSellInDay()) Quality+=QUALITY_INCREASE_VALUE;
+            else Quality += QUALITY_INCREASE_VALUE * 2;
 
-            if (Quality > 50) Quality = 50;
+            if (QualityExceedsMax()) Quality = MAX_QUALITY;
         }
     }
 }

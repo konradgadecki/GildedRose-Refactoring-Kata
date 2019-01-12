@@ -8,30 +8,34 @@ namespace csharp
 {
     public class BackstageItem : Item
     {
+
         public override void UpdateQuality()
         {
             SellIn--;
 
-            if (SellIn < 0)
-            {
-                Quality = 0;
-            }
-            else if (SellIn < 5)
-            {
-                Quality = Quality + 3;
-            }
-            else if (SellIn < 10)
-            {
-                Quality = Quality + 2;
-            }
-            else
-            {
-                Quality++;
-            }
+            if (!BeforeSellInDay()) Quality = MIN_QUALITY;
+            else IncreaseQuality();
 
-            if (Quality > 50) Quality = 50;
+            if (QualityExceedsMax()) Quality = MAX_QUALITY;
+        }
+
+        private void IncreaseQuality()
+        {
+            Quality++;
+            if (LessThan10DaysToConcert()) Quality++;
+            if (LessThan5DaysToConcert()) Quality++;
+        }
 
 
+        private bool LessThan5DaysToConcert()
+        {
+            return SellIn < 5;
+        }
+
+
+        private bool LessThan10DaysToConcert()
+        {
+            return SellIn < 10;
         }
     }
 }
